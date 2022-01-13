@@ -1,0 +1,253 @@
+:root {
+    --background: #003459;
+    --card_background: #FFFFFF;
+    --card_texts: #00171f;
+    --card_button: #007ea7;
+    --card_button_hover: #00a8e8;
+    --card_buttonSave: #238636;
+    --card_buttonSave_hover: #1b6b2a;
+    --header: #FFFFFF;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+    min-height: 100vh;
+    min-width: 100%;
+
+    background-color: var(--background);
+}
+
+#header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    height: fit-content;
+    min-width: 100%;
+    
+    padding: 1rem 0;
+
+    background-color: var(--header);
+    border-radius: 0 0 10px 10px;
+}
+.header_title {
+    display: flex;
+    position: absolute;
+
+    font-size: 25px;
+    font-weight: 600;
+
+    right: 46.3%;
+}
+
+.header_button {
+    display: flex;
+
+    border: 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--card_button);
+
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.header_button p {
+    font-weight: 500;
+    font-size: 15px;
+
+    pointer-events: none;
+}
+
+.header_button:hover {
+    background-color: var(--card_button_hover);
+    transform: scale(1.1);
+    transition: 0.1s linear;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 1rem;
+}
+#tip {
+    position: absolute;
+
+    color: var(--card_background);
+    opacity: 0.2;
+
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+
+    margin-top: 50px;
+
+    pointer-events: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-gap: 20px;
+    width: 90%;
+    height: auto;
+    margin-top: 50px;           
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: center;
+    padding: 20px 20px;
+    text-align: center;
+    background-color: var(--card_background);
+    border-radius: 20px;
+
+    height: fit-content;
+
+    position: relative;
+
+    animation: showCard 0.2s linear forwards;
+}
+
+.item:hover .item_firstrow{
+    animation: showButton 0.2s linear forwards;
+}
+
+.item_firstrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%;
+
+    opacity: 0;
+
+    height: fit-content;
+}
+
+.item_firstrow_button {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+
+    background-color: var(--card_button);
+
+    border: 0;
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.item_firstrow_button:hover {
+    background-color: var(--card_button_hover);
+    transform: scale(1.1);
+    transition: 0.1s linear;
+}
+
+
+.item_title {
+    color: var(--card_texts);
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+
+.item_description {
+    display: flex;
+    color: var(--card_texts);
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+}
+
+.item_saveButton {
+    display: flex;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 7px;
+
+    color: white;
+    background-color: var(--card_buttonSave);
+}
+.item_saveButton:hover {
+    transform: scale(1.1);
+    background-color: var(--card_buttonSave_hover);
+    transition: 0.1s linear;
+}
+
+/* inputs */
+
+input {
+    display: flex;
+    width: 80%;
+
+    padding: 0.5rem 0.7rem;
+
+    border-width: 1px;
+    border-radius: 7px;
+    border-color: black;
+
+    font-size: 25px;
+}
+
+@keyframes showButton {
+    0% {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+
+    80% {
+        opacity: 0.35;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showCard {
+    0% {
+        opacity: 0;
+        transform: translateY(-90px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes deleteCard {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .item_firstrow {
+        opacity: 1;
+
+        padding: 0 0 1rem 0;
+    }
+
+    .item:hover .item_firstrow{
+        animation: none;
+    }
+}
