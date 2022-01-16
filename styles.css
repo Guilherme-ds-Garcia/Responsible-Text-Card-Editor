@@ -6,6 +6,7 @@
     --card_button_hover: #00a8e8;
     --card_buttonSave: #238636;
     --card_buttonSave_hover: #1b6b2a;
+    --card_text_editing: #00345917;
     --header: #FFFFFF;
 }
 
@@ -15,6 +16,12 @@
     box-sizing: border-box;
 
     font-family: 'Roboto', sans-serif;
+}
+
+*[contentEditable=true] {
+    background-color: var(--card_text_editing);
+    border-radius: 5px;
+    padding: 5px 15px;
 }
 
 body {
@@ -86,7 +93,6 @@ body {
     position: absolute;
 
     color: var(--card_background);
-    opacity: 0.2;
 
     font-size: 50px;
     font-family: 'Roboto', sans-serif;
@@ -157,6 +163,31 @@ body {
     transition: 0.1s linear;
 }
 
+.item_checkButton {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+
+    border: 0;
+    border-radius: 7px;
+
+    cursor: pointer;
+    color: var(--header);
+    background-color: var(--card_buttonSave);
+}
+
+.item:not(.editing) .item_checkButton {
+    display: none;
+}
+
+.item.editing .item_firstrow_button {
+    display: none;
+}
+
+.item_checkButton:hover {
+    transform: scale(1.1);
+    transition: 0.1s linear;
+}
 
 .item_title {
     color: var(--card_texts);
@@ -171,37 +202,6 @@ body {
     font-size: 25px;
 }
 
-.item_saveButton {
-    display: flex;
-    padding: 0.5rem;
-    cursor: pointer;
-
-    border: 0;
-    border-radius: 7px;
-
-    color: white;
-    background-color: var(--card_buttonSave);
-}
-.item_saveButton:hover {
-    transform: scale(1.1);
-    background-color: var(--card_buttonSave_hover);
-    transition: 0.1s linear;
-}
-
-/* inputs */
-
-input {
-    display: flex;
-    width: 80%;
-
-    padding: 0.5rem 0.7rem;
-
-    border-width: 1px;
-    border-radius: 7px;
-    border-color: black;
-
-    font-size: 25px;
-}
 
 @keyframes showButton {
     0% {
@@ -243,8 +243,6 @@ input {
 
     .item_firstrow {
         opacity: 1;
-
-        padding: 0 0 1rem 0;
     }
 
     .item:hover .item_firstrow{
