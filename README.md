@@ -3,9 +3,11 @@
 
 This project is a responsible page with the possibility to create and edit text cards. Here you can save your goals, things to do and more.
 
-<ul> Features
+<h2> Features </h2>
+
+<ul> 
   <li>Responsible</li>
   <li>LocalStorage saving</li>
-  <li>Responsible</li>
+  <li>User Customization</li>
 </ul>
 
